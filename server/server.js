@@ -1,7 +1,11 @@
 const express = require("express");
+const logger = require("morgan");
 const app = express();
 const axios = require("axios");
+const indexRouter = require("./routes/index");
 //REQUIRES^
+
+app.use(logger("dev"));
 
 app.get("/api", async (req, res) => {
   let farmStandApi = await axios.get(
