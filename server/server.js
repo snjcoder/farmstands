@@ -2,7 +2,7 @@ const express = require("express");
 const logger = require("morgan");
 const app = express();
 const axios = require("axios");
-const indexRouter = require("./routes/index");
+const userRouter = require("./routes/userRoutes");
 //REQUIRES^
 
 app.use(logger("dev"));

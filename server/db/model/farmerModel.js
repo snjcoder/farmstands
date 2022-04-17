@@ -10,7 +10,8 @@ const farmerSchema = new Schema({
     required: true,
     lowercase: true,
   },
-  businessName: String,
+  businessname: StringConstructor,
+  address: addressSchema,
   comments: [{ body: StringConstructor, date: DateConstructor }],
   date: { type: Date, default: Date.now },
   hidden: Boolean,
@@ -20,4 +21,16 @@ const farmerSchema = new Schema({
   },
 });
 
-const farmerModel = model("Farmer", farmerSchema);
+const FarmerModel = model("Farmer", farmerSchema);
+
+const createFarmerModel = async (farmerModel) => {
+  const newFarmerModel = await FarmerModel.create(farmerModel);
+  return newFarmerModel;
+};
+
+const getAllFarmerModels = async () => {
+  const farmerModels = await FarmerModel.find();
+  return farmerModels;
+};
+
+module.exports = { getAllFarmerModels, createFarmerModel };
