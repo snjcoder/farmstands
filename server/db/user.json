@@ -1,18 +1,18 @@
 [
   {
-    "name": "Ironman"
-    
+    "Username": "Ironman",
+    "Password": 1234567
   },
   {
-    "name": "Spiderman"
-   
+    "Username": "Spiderman",
+    "Password": 7654321
   },
   {
-    "name": "Wonder Woman"
-    
+    "Username": "Wonder Woman",
+    "Password": 9876543
   },
   {
-    "name": "Siri Woman"
-    
+    "Username": "Hulk",
+    "Password": 1234567
   }
 ]
