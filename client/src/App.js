@@ -3,7 +3,6 @@ import { useState } from "react";
 import ApiData from "./components/ApiData";
 import Navbar from "./components/Navbar/Navindex";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Form from "./components/SignUp/Form";
 import PopUpDialog from "./components/SignUp/PopUpDialog";
 
 function App() {
