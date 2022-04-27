@@ -10,8 +10,17 @@ import {
 } from "./NavbarElement";
 import Searchbox from "./Searchbox";
 import HeaderCartButton from "./HeaderCartButton";
+import { useState } from "react";
 
 const Navbar = (props) => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  function openHamburger() {
+    setMenuOpen((curr) => !curr);
+  }
+  function onShowCart() {
+    props.onShowCart();
+    openHamburger();
+  }
   return (
     <>
       <Nav>
@@ -19,17 +28,24 @@ const Navbar = (props) => {
           <img src="./images/farmer.png" height={40} />
           <h1>FARMSTANDS</h1>
         </NavLink>
-        <Bars />
-        <NavMenu>
-          <NavLink to="/about">About</NavLink>
-          <NavLink to="/location">Location</NavLink>
+        <Bars onClick={openHamburger} />
+        <NavMenu menuOpen={menuOpen}>
+          <NavLink ml={"auto"} to="/about" onClick={openHamburger}>
+            About
+          </NavLink>
+          <NavLink to="/location" onClick={openHamburger}>
+            Location
+          </NavLink>
           <Searchbox />
+          <NavLink ml={"auto"} to="/sign-up" onClick={openHamburger}>
+            Sign Up
+          </NavLink>
+          <NavLink to="/sign-in" onClick={openHamburger}>
+            Sign In{" "}
+          </NavLink>
+          <HeaderCartButton onClick={onShowCart} />
         </NavMenu>
-        <NavBtn>
-          <NavLink to="/sign-up">Sign Up</NavLink>
-          <NavBtnLink to="/sign-in">Sign In </NavBtnLink>
-          <HeaderCartButton onClick={props.onShowCart} />
-        </NavBtn>
+        <NavBtn></NavBtn>
       </Nav>
     </>
   );

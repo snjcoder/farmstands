@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import axios from "axios";
 import classes from "./FarmStand.module.css";
-import Mapbox from "../Mapbox/Mapbox";
+// import Mapbox from "../Mapbox/Mapbox";
 import Products from "../StoreFront/Products";
 
 function FarmStand(props) {
@@ -38,10 +38,10 @@ function FarmStand(props) {
               </div>
             </div>
           </div>
-          <Mapbox
+          {/* <Mapbox
             long={farmStandData.point.coordinates[0]}
             lat={farmStandData.point.coordinates[1]}
-          />
+          /> */}
         </section>
       )}
       <Products />
