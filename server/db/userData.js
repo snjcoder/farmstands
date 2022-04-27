@@ -1,17 +1,19 @@
 const initialData = require("./user.json");
 const { createUserModel } = require("./model/userModel");
+const debug = require("debug")("server:userData");
+
 const userData = async () => {
   for (let i = 0; i < initialData.length; i++) {
     const user = initialData[i];
     try {
-      console.log(`creating user ${user.Username}`);
+      debug(`creating user ${user.firstName}`);
       const newUser = await createUserModel(user);
-      console.log(`created user ${newUser.Username} with id ${newUser._id}`);
+      debug(`created user ${newUser.firstName} with id ${newUser._id}`);
     } catch (err) {
-      console.log(`error creating user ${user.Username}`);
-      console.log(err.message);
+      debug(`error creating user ${user.firstName}`);
+      debug(err.message);
     }
   }
-  console.log("finished loading initial data");
+  debug("finished loading initial data");
 };
 userData();

@@ -1,18 +1,22 @@
 [
   {
-    "Username": "Ironman",
-    "Password": 1234567
+    "firstName": "Ironman",
+    "password": 1234567,
+    "email": "test@mail.com"
   },
   {
-    "Username": "Spiderman",
-    "Password": 7654321
+    "username": "Spiderman",
+    "password": 7654321,
+    "email": "dbtest@mail.com"
   },
   {
-    "Username": "Wonder Woman",
-    "Password": 9876543
+    "username": "Wonder Woman",
+    "password": 9876543,
+    "email": "dbtest@mail.com"
   },
   {
-    "Username": "Hulk",
-    "Password": 1234567
+    "username": "Hulk",
+    "password": 1234567,
+    "email": "dbtest@mail.com"
   }
 ]
