@@ -1,23 +1,41 @@
-import { useState } from "react"
+import { useState } from "react";
 import { FaEye } from "react-icons/fa";
+import { Navigate } from "react-router-dom";
+import "./FarmerLogin.css";
 
 const FarmerLogin = () => {
-
-  const eye = <FaEye icon={FaEye} />;
-  const [farmer, setFarmer] = useState('');
-  const [pwd, setPwd] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [showPass, setshowPass] = useState(false);
   //Just for learning purposes - to be removed
   const [success, setSuccess] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(farmer, pwd);
-    setFarmer('');
-    setPwd('');
+    setUsername("");
+    setPassword("");
     //Placeholder to see action of form submission
     setSuccess(true);
-  }
+
+    const loginFarmer = {
+      username: username,
+      password: password,
+    };
+            const data = JSON.stringify(loginFarmer);
+            console.log(`Creating new farmer: ${data}`);
+            const response = await fetch("/sign-in/login", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: data,
+            });
+            if (response.status === 200) {
+              console.log("Successful login");
+            } else {
+              alert("login failed");
+            }
+  };
 
   const togglePasswordVis = () => {
     setshowPass(!showPass);
@@ -27,11 +45,7 @@ const FarmerLogin = () => {
     <div>
       {success ? (
         <section>
-          <h1>You are logged in</h1>
-          <br />
-          <p>
-            <a href="#">Go to home page</a>
-          </p>
+          <Navigate to={"/inventory"}></Navigate>
         </section>
       ) : (
         <section>
@@ -39,46 +53,44 @@ const FarmerLogin = () => {
           <form onSubmit={handleSubmit}>
             <label htmlFor="username">
               Username:
+            </label>
+            <p />
               <input
                 type="text"
                 id="username"
                 autoComplete="off"
-                onChange={(e) => setFarmer(e.target.value)}
-                value={farmer}
+                onChange={(e) => setUsername(e.target.value)}
+                value={username}
                 required
               />
-              </label>
-            <br />
             <label htmlFor="password">
               Password:
+            </label>
+            <p />
               <input
                 type={showPass ? "text" : "password"}
                 id="password"
-                onChange={(e) => setPwd(e.target.value)}
-                value={pwd}
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
                 required
-                />
-                <i style={{ position: "relative", marginLeft: -20, top: 3, cursor: "pointer" }}
-                  onClick={togglePasswordVis}>{eye}</i>
-              </label>
-            <br />
+              />
+              <FaEye className="eye" onClick={togglePasswordVis} />
             <label htmlFor="submit">
               <input type="submit" id="submit" value="Sign In" />
             </label>
+            <p />
           </form>
-          <p>
-            Need an account?
-            <br />
-            <a href="#">Sign Up</a>
-            <br />
-            <a href="#">Continue as guest</a>
-            <br />
-            <a href="#">Forgot Password</a>
-          </p>
-          </section>
+          <h4>Need an account?</h4>
+          <p />
+          <a href="#">Sign Up</a>
+          <p />
+          <a href="#">Continue as guest</a>
+          <p />
+          <a href="#">Forgot Password</a>
+        </section>
       )}
-    </div> 
+    </div>
   );
-}
+};
 
-export default FarmerLogin
+export default FarmerLogin;

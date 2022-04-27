@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Box, makeStyles, Avatar, TextField } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import Radio from "@material-ui/core/Radio";
@@ -28,16 +28,39 @@ const useStyles = makeStyles((theme) => ({
 const Form = ({ handleClose }) => {
   const classes = useStyles();
   // create state variables for each input
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [firstName, setFirstName] = useState();
+  const [lastName, setLastName] = useState();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const [gender, setGender] = useState();
   const avatarStyle = { backgroundColor: "#1bbd7e" };
   const GenderStyle = { width: "100%", margin: "5px 0 0 18px" };
+  const [userList, setUserList] = useState();
+  
+
+  useEffect(() => {
+    if (userList) {
+      setFirstName(userList.firstName);
+      setLastName(userList.lastName);
+      setEmail(userList.email);
+      setPassword(userList.password);
+      setGender(userList.gender);
+
+      console.log(`userList is:`, userList);
+    }
+  }, [userList]);
+
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(firstName, lastName, email, password);
+    setFirstName("");
+    setLastName("");
+    setEmail("");
+    setPassword("");
+    setGender("");
+
+    console.log(firstName, lastName, email, password, gender);
     handleClose();
   };
 

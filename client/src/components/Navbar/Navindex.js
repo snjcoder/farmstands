@@ -9,8 +9,9 @@ import {
   CartLink,
 } from "./NavbarElement";
 import Searchbox from "./Searchbox";
+import HeaderCartButton from "./HeaderCartButton";
 
-const Navbar = () => {
+const Navbar = (props) => {
   return (
     <>
       <Nav>
@@ -21,19 +22,13 @@ const Navbar = () => {
         <Bars />
         <NavMenu>
           <NavLink to="/about">About</NavLink>
-          <NavLink to="/contact-us">Contact Us</NavLink>
           <NavLink to="/location">Location</NavLink>
           <Searchbox />
         </NavMenu>
         <NavBtn>
           <NavLink to="/sign-up">Sign Up</NavLink>
-          <NavBtnLink to="/signin">Sign In </NavBtnLink>
-          <NavLink to="/cart">
-            <CartLink>
-              <img src="./images/cart.png" height={40} />
-              <p>Cart</p>
-            </CartLink>
-          </NavLink>
+          <NavBtnLink to="/sign-in">Sign In </NavBtnLink>
+          <HeaderCartButton onClick={props.onShowCart} />
         </NavBtn>
       </Nav>
     </>
