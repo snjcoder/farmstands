@@ -3,10 +3,30 @@ import React from "react";
 const home = () => {
   return (
     <div>
-      <div id="home">
-        <h1>Connecting Local Farmer's with Local Communities</h1>
+      <div id="home" style={{ position: "relative" }}>
+        <h1
+          style={{
+            position: "absolute",
+            top: "58%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            display: "block",
+            color: "white",
+          }}
+        >
+          <center>
+            {" "}
+            <img src="./images/pic/support.png" height={100} width={100} />
+          </center>{" "}
+          <br />
+          Connecting Local Farmer's with Local Communities{" "}
+          <center>
+            {" "}
+            <img src="./images/pic/2.jpg" height={400} width={600} />
+          </center>
+        </h1>
+        <img src="./images/pic/field.gif" height={700} width={1600} />
       </div>
-      <img src="./images/Home1.jpg" height={700} width={1600} />
     </div>
   );
 };
