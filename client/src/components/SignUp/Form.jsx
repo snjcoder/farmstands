@@ -63,6 +63,15 @@ const Form = ({ handleClose }) => {
     console.log(firstName, lastName, email, password, gender);
     handleClose();
   };
+  console.log(newUser);
+  const data = JSON.stringify(newUser);
+  let response = await fetch("/users/sign-up", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: data,
+  });
 
   return (
     <form className={classes.root} onSubmit={handleSubmit}>
