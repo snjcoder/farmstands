@@ -10,6 +10,7 @@ import FarmerInventoryPage from "./components/Pages/FarmerInventoryPage";
 import ModalDialog from "./components/Signup/ModalDialog";
 import Home from "./components/Home";
 import Aboutus from "./components/AboutUs";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const [cart, setCart] = useState(false);
@@ -33,6 +34,7 @@ function App() {
         <Route path="/inventory" element={<FarmerInventoryPage />} />
         <Route path="/locationId/:id" element={<FarmStandDetailPage />} />
       </Routes>
+      <Footer />
     </CartProvider>
   );
 }
