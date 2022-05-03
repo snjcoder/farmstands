@@ -35,25 +35,27 @@ const Form = ({ handleClose }) => {
   const [gender, setGender] = useState();
   const avatarStyle = { backgroundColor: "#1bbd7e" };
   const GenderStyle = { width: "100%", margin: "5px 0 0 18px" };
-  const [userList, setUserList] = useState();
-  
 
-  useEffect(() => {
-    if (userList) {
-      setFirstName(userList.firstName);
-      setLastName(userList.lastName);
-      setEmail(userList.email);
-      setPassword(userList.password);
-      setGender(userList.gender);
-
-      console.log(`userList is:`, userList);
-    }
-  }, [userList]);
-
-
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const newUser = {
+      firstName,
+      lastName,
+      email,
+      password,
+      gender,
+    };
+    console.log("newUser", newUser);
+    const data = JSON.stringify(newUser);
+    let response = await fetch("/users/sign-up", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: data,
+    });
+    let user = await response.json();
+    console.log("user", user);
     setFirstName("");
     setLastName("");
     setEmail("");
@@ -63,15 +65,7 @@ const Form = ({ handleClose }) => {
     console.log(firstName, lastName, email, password, gender);
     handleClose();
   };
-  console.log(newUser);
-  const data = JSON.stringify(newUser);
-  let response = await fetch("/users/sign-up", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: data,
-  });
+  console.log(gender);
 
   return (
     <form className={classes.root} onSubmit={handleSubmit}>

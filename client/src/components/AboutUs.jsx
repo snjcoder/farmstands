@@ -12,11 +12,20 @@ const AboutUs = () => {
   return (
     <div>
       <Container style={{ marginTop: "100px", textAlign: "center" }}>
-        <Typography varient="h2">ABOUT US</Typography>
+        <Typography
+          style={{ fontWeight: "bold", color: "Black", fontSize: "50px" }}
+          varient="h2"
+        >
+          ABOUT US
+        </Typography>
         <br />
-        <Typography paragraph>
+        <Typography
+          paragraph
+          style={{ fontWeight: "bold", color: "Black", fontSize: "25px" }}
+        >
           Bringing it to the Table: On Farming and Food
         </Typography>
+
         <Typography paragraph>
           “Why do farmers farm, given their economic adversities on top of the
           many frustrations and difficulties normal to farming? And always the
@@ -32,6 +41,7 @@ const AboutUs = () => {
           merely to be self-employed to live at least a part of their lives
           without a boss.” - Wendell Berry
         </Typography>
+        <br />
       </Container>
       <Container>
         <ImageList sx={{ width: 500, height: 450 }} cols={3} rowHeight={164}>
@@ -46,6 +56,7 @@ const AboutUs = () => {
             </ImageListItem>
           ))}
         </ImageList>
+        <br />
       </Container>
     </div>
   );
