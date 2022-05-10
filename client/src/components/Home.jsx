@@ -25,7 +25,7 @@ const home = () => {
             <img src="./images/pic/2.jpg" height={250} width={350} />
           </center>
         </h1>
-        <img src="./images/pic/field.gif" height={710} width={1520} />
+        <img src="./images/pic/wheeat.jpg" height={710} width={1520} />
       </div>
     </div>
   );
