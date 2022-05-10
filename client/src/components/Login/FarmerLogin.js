@@ -21,20 +21,20 @@ const FarmerLogin = () => {
       username: username,
       password: password,
     };
-            const data = JSON.stringify(loginFarmer);
-            console.log(`Creating new farmer: ${data}`);
-            const response = await fetch("/sign-in/login", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: data,
-            });
-            if (response.status === 200) {
-              console.log("Successful login");
-            } else {
-              alert("login failed");
-            }
+    const data = JSON.stringify(loginFarmer);
+    console.log(`Creating new farmer: ${data}`);
+    const response = await fetch("/sign-in/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: data,
+    });
+    if (response.status === 200) {
+      console.log("Successful login");
+    } else {
+      alert("login failed");
+    }
   };
 
   const togglePasswordVis = () => {
@@ -42,7 +42,7 @@ const FarmerLogin = () => {
   };
 
   return (
-    <div>
+    <div style={{ height: "80vh", padding: 50 }}>
       {success ? (
         <section>
           <Navigate to={"/inventory"}></Navigate>
@@ -51,30 +51,26 @@ const FarmerLogin = () => {
         <section>
           <h1>Sign In</h1>
           <form onSubmit={handleSubmit}>
-            <label htmlFor="username">
-              Username:
-            </label>
+            <label htmlFor="username">Username:</label>
             <p />
-              <input
-                type="text"
-                id="username"
-                autoComplete="off"
-                onChange={(e) => setUsername(e.target.value)}
-                value={username}
-                required
-              />
-            <label htmlFor="password">
-              Password:
-            </label>
+            <input
+              type="text"
+              id="username"
+              autoComplete="off"
+              onChange={(e) => setUsername(e.target.value)}
+              value={username}
+              required
+            />
+            <label htmlFor="password">Password:</label>
             <p />
-              <input
-                type={showPass ? "text" : "password"}
-                id="password"
-                onChange={(e) => setPassword(e.target.value)}
-                value={password}
-                required
-              />
-              <FaEye className="eye" onClick={togglePasswordVis} />
+            <input
+              type={showPass ? "text" : "password"}
+              id="password"
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
+              required
+            />
+            <FaEye className="eye" onClick={togglePasswordVis} />
             <label htmlFor="submit">
               <input type="submit" id="submit" value="Sign In" />
             </label>
