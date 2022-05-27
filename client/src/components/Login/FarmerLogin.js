@@ -2,6 +2,7 @@ import { useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { Navigate } from "react-router-dom";
 import "./FarmerLogin.css";
+import ModalDialog from "../Signup/ModalDialog";
 
 const FarmerLogin = () => {
   const [username, setUsername] = useState("");
@@ -9,6 +10,7 @@ const FarmerLogin = () => {
   const [showPass, setshowPass] = useState(false);
   //Just for learning purposes - to be removed
   const [success, setSuccess] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -61,7 +63,9 @@ const FarmerLogin = () => {
               value={username}
               required
             />
-            <label htmlFor="password">Password:</label>
+            <label htmlFor="password" className="password">
+              Password:
+            </label>
             <p />
             <input
               type={showPass ? "text" : "password"}
@@ -71,18 +75,16 @@ const FarmerLogin = () => {
               required
             />
             <FaEye className="eye" onClick={togglePasswordVis} />
-            <label htmlFor="submit">
-              <input type="submit" id="submit" value="Sign In" />
-            </label>
+            <label htmlFor="submit" className="submit"></label>
+            <input type="submit" id="submit" value="Sign In" />
             <p />
           </form>
           <h4>Need an account?</h4>
           <p />
-          <a href="#">Sign Up</a>
-          <p />
-          <a href="#">Continue as guest</a>
-          <p />
-          <a href="#">Forgot Password</a>
+          <a href="#" onClick={() => setShowModal(true)}>
+            Sign Up
+          </a>
+          {showModal && <ModalDialog />}
         </section>
       )}
     </div>
