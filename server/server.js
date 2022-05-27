@@ -11,6 +11,7 @@ const farmerInventory = require("./routes/farmerInventory")
 const userRouter= require("./routes/userRoutes")
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use("/sign-in", farmerLogin);
 app.use("/users", userRouter);
