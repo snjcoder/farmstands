@@ -9,7 +9,7 @@
 <h2> To Run This Project </h2>
 <p>
   <ol>
-    <li> Git clone: https://github.com/Alexander-Jessop/calgary-flood-and-emergency-data.git </li>
+    <li> Git clone: https://github.com/snjcoder/farmstands.git </li>
     <li>  With GitBash cd into folder Project2 </li>
     <li>  Open your favourite code editor (e.g. "code ." to run VSCode on this project) </li>
     <li>  "npm install" in order to install all NPM's in node_modules </li>
